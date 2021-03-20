@@ -35,7 +35,7 @@ The results of the tests are saved in a file called `data.csv` and a python scri
 - Choosing the pivot was initially done with the naïve method (choosing the last element) which was later changed to the median-of-3 method that selects the median of the first, middle, and last element as the pivot.
   - This works well for every type of array except for arrays with a single number. As a result, I am considering implementing a partition method that utilizes a 3-way partition algorithm along with median-of-3. Initial tests suggest that this does significantly improve runtimes on a single number array but also suggest in slower runtimes for every other array.
 
-## Results
+## (Current) Results
 
 On a sorted and randomized array, my implementation of Introsort outperforms (albeit slightly) std::sort() and Quick sort.
 
