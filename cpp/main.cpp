@@ -84,17 +84,17 @@ int main() {
     for(int i = begin; i <= s; i += step) {
         double quickTime = 0, introTime = 0, stdTime = 0, mergeTime = 0, heapTime = 0;
         for(int x = 0; x < 20; x++) {
-            vector<double> res = makeReverseArray(i);
+            vector<double> res = makeConstantArray(i);
             
             long millis = getTime();
-            quickSort(res, 0, i-1);
+            //quickSort(res, 0, i-1);
             long millis2 = getTime();
-            quickTime += millis2 - millis;
+            //quickTime += millis2 - millis;
             //make sure our implementation of quicksort is working
             if(!isSorted(res))
                 return 1;
             
-            res = makeReverseArray(i);
+            res = makeConstantArray(i);
 
             millis = getTime();
             introSort(res, 0, i-1);
@@ -104,7 +104,7 @@ int main() {
             if(!isSorted(res))
                 return 1;
 
-            res = makeReverseArray(i);
+            res = makeConstantArray(i);
 
             millis = getTime();
             sort(res.begin(), res.end());
@@ -174,7 +174,7 @@ int main() {
         myfile <<  i << "," << introTime << "," << stdTime << "," << mergeTime << "," << heapTime << endl;
 
         cout << "Array of size " << i << endl;
-        cout << "Runtime of quicksort: " << quickTime << "ms" << endl;
+        //cout << "Runtime of quicksort: " << quickTime << "ms" << endl;
         cout << "Runtime of introsort: " << introTime << "ms" << endl;
         cout << "Runtime of std::sort: " << stdTime << "ms" << endl;
         cout << "Runtime of mergesort: " << mergeTime << "ms" << endl;
