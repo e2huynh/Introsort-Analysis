@@ -30,9 +30,7 @@ The results of the tests are saved in a file called `data.csv` and a python scri
 
 - Most online implementations ([geeksforgeeks](https://www.geeksforgeeks.org/introsort-or-introspective-sort/)) of Introsort suggest immediately running Insertion sort on small subarrays
   - This causes the performance of Introsort to be very slow as the Heap sort and Quick sort portions of the sorting algorithm become held up. Testing was stopped at 500,000 for the sake of time.![Initial Algorithm](images/insertNow.png)
-  - In actuality, Musser suggests leaving the small subarrays to be unsorted and then to run one final pass of Insertion sort at the end. This results in significant improvements.
-
-![Revision](images/insertAtEnd.png)
+  - In actuality, Musser suggests leaving the small subarrays to be unsorted and then to run one final pass of Insertion sort at the end. This results in significant improvements.![Revision](images/insertAtEnd.png)
 
 - Choosing the pivot was initially done with the naïve method (choosing the last element) which was later changed to the median-of-3 method that selects the median of the first, middle, and last element as the pivot.
   - This works well for every type of array except for arrays with a single number. As a result, I am considering implementing a partition method that utilizes a 3-way partition algorithm along with median-of-3. Initial tests suggest that this does significantly improve runtimes on a single number array but also suggest in slower runtimes for every other array.
@@ -41,19 +39,15 @@ The results of the tests are saved in a file called `data.csv` and a python scri
 
 On a sorted and randomized array, my implementation of Introsort outperforms (albeit slightly) std::sort() and Quick sort.
 
-**Random:**
+**Random:**![Random](images/random.png)
 
-![Random](images/random.png)
-
-**Sorted:**
-
-![Sorted](images/sorted.png)
+**Sorted:**![Sorted](images/sorted.png)
 
 
 
 However, on a reverse sorted and single number array, my implementation of Introsort suffers.
 
-**Reverse:**
+**Reverse:**![Reverse](images/reverse.png)
 
-![Reverse](images/reverse.png)
+**Constant:** ![Constant](images/constant.png)
 
