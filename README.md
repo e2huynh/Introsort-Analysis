@@ -39,15 +39,23 @@ The results of the tests are saved in a file called `data.csv` and a python scri
 
 On a sorted and randomized array, my implementation of Introsort outperforms (albeit slightly) std::sort() and Quick sort.
 
-**Random:**![Random](images/random.png)
+**Random:**
 
-**Sorted:**![Sorted](images/sorted.png)
+![Random](images/random.png)
+
+**Sorted:**
+
+![Sorted](images/sorted.png)
 
 
 
 However, on a reverse sorted and single number array, my implementation of Introsort suffers.
 
-**Reverse:**![Reverse](images/reverse.png)
+**Reverse:**
 
-**Constant:** ![Constant](images/constant.png)
+![Reverse](images/reverse.png)
+
+**Constant:**
+
+ ![Constant](images/constant.png)
 
