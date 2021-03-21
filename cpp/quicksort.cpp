@@ -62,13 +62,8 @@ int medianOf3Partition(vector<double>& array, int low, int high) {
 
 //median of 3 for the pivot and 3-way partitioning
 void medianOf3Partition3(vector<double>& array, int low, int high, int& i, int& j) {
-    if(high - low <= 1) {
-        if(array[high] < array[low])
-            swap(array[high], array[low]);
-        i = low;
-        j = high;
-        return;
-    }
+    i = low - 1, j = high;
+    int p = low - 1, q = high;
 
     int mid = (low+high)/2;
     if(array[mid] < array[low])
@@ -81,16 +76,40 @@ void medianOf3Partition3(vector<double>& array, int low, int high, int& i, int& 
         swap(array[low], array[high]);
     double pivot = array[high];
     mid = low;
-    while(mid <= high) {
-        if(array[mid] < pivot)
-            swap(array[low++], array[mid++]);
-        else if(array[mid] == pivot)
-            mid++;
-        else
-            swap(array[mid], array[high--]);
+    
+    while(true) {
+        while(array[++i] < pivot)
+            ;
+        
+        while(pivot < array[--j])
+            if(j == low)
+                break;
+
+        if(i >= j)
+            break;
+
+        swap(array[i], array[j]);
+
+        if(array[i] == pivot) {
+            p++;
+            swap(array[p], array[i]);
+        }
+
+        if(array[j] == pivot) {
+            q--;
+            swap(array[j], array[q]);
+        }
     }
-    i = low - 1;
-    j = mid;
+
+    swap(array[i], array[high]);
+
+    j = i - 1;
+    for(int k = low; k < p; k++, j--)
+        swap(array[k], array[j]);
+
+    i++;
+    for(int k = high - 1; k > q; k--, i++)
+        swap(array[i], array[k]);
 }
 
 void quickSort(vector<double>& array, int low, int high) {
@@ -98,8 +117,8 @@ void quickSort(vector<double>& array, int low, int high) {
         int i, j;
         medianOf3Partition3(array, low, high, i, j);
 
-        quickSort(array, low, i);
-        quickSort(array, j, high);
+        quickSort(array, low, j);
+        quickSort(array, i, high);
     }
 }
 

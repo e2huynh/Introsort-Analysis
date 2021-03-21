@@ -7,15 +7,18 @@
 using namespace std;
 
 void introSorting(vector<double>& array, int low, int high, int depth) {
+    if(low >= high)
+        return;
     if(high - low > 16) {
         if(!depth) {
             make_heap(array.begin() + low, array.begin() + high+1);
             sort_heap(array.begin() + low, array.begin() + high+1);
         }
         else {
-            int index = medianOf3Partition(array, low, high);
-            introSorting(array, low, index - 1, depth - 1);
-            introSorting(array, index + 1, high, depth - 1);
+            int i, j;
+            medianOf3Partition3(array, low, high, i, j);
+            introSorting(array, low, i, depth - 1);
+            introSorting(array, j, high, depth - 1);
         }
     }
 }

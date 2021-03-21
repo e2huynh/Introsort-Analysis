@@ -33,7 +33,16 @@ The results of the tests are saved in a file called `data.csv` and a python scri
   - In actuality, Musser suggests leaving the small subarrays to be unsorted and then to run one final pass of Insertion sort at the end. This results in significant improvements.![Revision](images/insertAtEnd.png)
 
 - Choosing the pivot was initially done with the naïve method (choosing the last element) which was later changed to the median-of-3 method that selects the median of the first, middle, and last element as the pivot.
-  - This works well for every type of array except for arrays with a single number. As a result, I am considering implementing a partition method that utilizes a 3-way partition algorithm along with median-of-3. Initial tests suggest that this does significantly improve runtimes on a single number array but also suggest in slower runtimes for every other array.
+
+- This works well for every type of array except for arrays with a single/many repeated elements. Implementing 3-way partition proves to be useful with this but results in large decrease in performance in a reverse sorted array.
+
+  - Changing the specific implementation of 3-way partition to the one provided by [geeksforgeeks](https://www.geeksforgeeks.org/3-way-quicksort-dutch-national-flag/) solves this issue.
+
+  **Initial 3-way partition method on a reverse sorted array:**
+
+  ![Reverse Sorted Array with 3-way partition](images/reverse3way.png)
+
+  **Revised 3-way partition method on a reverse sorted array:**
 
 ## (Current) Results
 

@@ -78,23 +78,23 @@ long getTime() {
 int main() {
     ofstream myfile;
     myfile.open("./cpp/data.csv");
-    myfile << "Array Size,Intro,std::sort,Merge,Heap" << endl;
+    myfile << "Array Size,Quick,Intro,std::sort,Merge,Heap" << endl;
     int s = 2000000, begin = 50000, step = 50000;
 
     for(int i = begin; i <= s; i += step) {
         double quickTime = 0, introTime = 0, stdTime = 0, mergeTime = 0, heapTime = 0;
         for(int x = 0; x < 20; x++) {
-            vector<double> res = makeConstantArray(i);
+            vector<double> res = makeReverseArray(i);
             
             long millis = getTime();
-            //quickSort(res, 0, i-1);
+            quickSort(res, 0, i-1);
             long millis2 = getTime();
-            //quickTime += millis2 - millis;
+            quickTime += millis2 - millis;
             //make sure our implementation of quicksort is working
             if(!isSorted(res))
                 return 1;
             
-            res = makeConstantArray(i);
+            res = makeReverseArray(i);
 
             millis = getTime();
             introSort(res, 0, i-1);
@@ -104,14 +104,14 @@ int main() {
             if(!isSorted(res))
                 return 1;
 
-            res = makeConstantArray(i);
+            res = makeReverseArray(i);
 
             millis = getTime();
             sort(res.begin(), res.end());
             millis2 = getTime();
             stdTime += millis2 - millis;
             
-            res = makeConstantArray(i);
+            res = makeReverseArray(i);
             
             millis = getTime();
             mergeSort(res, 0, i-1);
@@ -121,7 +121,7 @@ int main() {
             if(!isSorted(res))
                 return 1;
 
-            res = makeConstantArray(i);
+            res = makeReverseArray(i);
             
             millis = getTime();
             make_heap(res.begin(), res.end());
@@ -171,10 +171,10 @@ int main() {
         mergeTime /= 20;
         heapTime /= 20;
 
-        myfile <<  i << "," << introTime << "," << stdTime << "," << mergeTime << "," << heapTime << endl;
+        myfile <<  i << "," << quickTime << "," << introTime << "," << stdTime << "," << mergeTime << "," << heapTime << endl;
 
         cout << "Array of size " << i << endl;
-        //cout << "Runtime of quicksort: " << quickTime << "ms" << endl;
+        cout << "Runtime of quicksort: " << quickTime << "ms" << endl;
         cout << "Runtime of introsort: " << introTime << "ms" << endl;
         cout << "Runtime of std::sort: " << stdTime << "ms" << endl;
         cout << "Runtime of mergesort: " << mergeTime << "ms" << endl;
