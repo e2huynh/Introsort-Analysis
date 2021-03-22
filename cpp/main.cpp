@@ -84,7 +84,7 @@ int main() {
     for(int i = begin; i <= s; i += step) {
         double quickTime = 0, introTime = 0, stdTime = 0, mergeTime = 0, heapTime = 0;
         for(int x = 0; x < 20; x++) {
-            vector<double> res = makeReverseArray(i);
+            vector<double> res = makeSortedArray(i);
             
             long millis = getTime();
             quickSort(res, 0, i-1);
@@ -94,7 +94,7 @@ int main() {
             if(!isSorted(res))
                 return 1;
             
-            res = makeReverseArray(i);
+            res = makeSortedArray(i);
 
             millis = getTime();
             introSort(res, 0, i-1);
@@ -104,14 +104,14 @@ int main() {
             if(!isSorted(res))
                 return 1;
 
-            res = makeReverseArray(i);
+            res = makeSortedArray(i);
 
             millis = getTime();
             sort(res.begin(), res.end());
             millis2 = getTime();
             stdTime += millis2 - millis;
             
-            res = makeReverseArray(i);
+            res = makeSortedArray(i);
             
             millis = getTime();
             mergeSort(res, 0, i-1);
@@ -121,7 +121,7 @@ int main() {
             if(!isSorted(res))
                 return 1;
 
-            res = makeReverseArray(i);
+            res = makeSortedArray(i);
             
             millis = getTime();
             make_heap(res.begin(), res.end());
@@ -132,7 +132,7 @@ int main() {
             if(!isSorted(res))
                 return 1;
             
-            /*
+            /* Uncomment this section to run insertion, selection, and bubble sort
             res = makeRandArray(i);
             
             millis = getTime();

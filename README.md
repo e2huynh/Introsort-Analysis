@@ -40,13 +40,15 @@ The results of the tests are saved in a file called `data.csv` and a python scri
 
   **Initial 3-way partition method on a reverse sorted array:**
 
-  ![Reverse Sorted Array with 3-way partition](images/reverse3way.png)
+  ![Reverse Sorted Array with 3-way partition](images/reversev2.png)
 
   **Revised 3-way partition method on a reverse sorted array:**
+  
+  ![Revised Reverse](images/reversev3.png)
 
-## (Current) Results
+## Results
 
-On a sorted and randomized array, my implementation of Introsort outperforms (albeit slightly) std::sort() and Quick sort.
+My implementation of Introsort was improved solely through modifications to the Quicksort portion of the algorithm. The Insertion sort and Heap sort portions remained the same throughout the testing phase. Initially, I started with a naïve pivot selection method of choosing the last element. That evolved to the median of 3 method. In addition, I started with the standard 2-way partitioning method. Further testing revealed that this partitioning method suffers against data with many duplicates. As a result, I switched to the 3-way partitioning method, aka the Dutch National Flag algorithm. With these modifications, my final iteration of Introsort outperforms std::sort() in all four testcases.
 
 **Random:**
 
@@ -56,13 +58,9 @@ On a sorted and randomized array, my implementation of Introsort outperforms (al
 
 ![Sorted](images/sorted.png)
 
-
-
-However, on a reverse sorted and single number array, my implementation of Introsort suffers.
-
 **Reverse:**
 
-![Reverse](images/reverse.png)
+![Reverse](images/reversev3.png)
 
 **Constant:**
 
